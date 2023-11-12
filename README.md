@@ -6,15 +6,15 @@
 
 ### 1 Установка зависомости
    
-   php composer install
+   composer install
    
 ### 2 Создание .env
    
-   php cp .env.example .env
+   cp .env.example .env
 
 ### 3 Генерирование ключ
    
-   php php artisan key:generate
+   php artisan key:generate
 
 ### 4 Миграция таблицы
 
@@ -26,7 +26,9 @@
 
   php artisan db:seed --class=ProductsTableSeeder
 
-# Установка Vuejs
+  php artisan serve
+
+# Установка Vuejs корне в папке vuejs
    
    cd vuejs
 
