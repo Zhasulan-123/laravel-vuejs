@@ -35,9 +35,6 @@ export default {
     handleRegistration() {
         this.$router.push("/registration");
     },
-    handleUser() {
-        this.$router.push("/user");
-    },
   },
 }
 </script>

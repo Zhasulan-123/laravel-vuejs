@@ -4,23 +4,23 @@
 
    cd laravel-vuejs
 
-1 Установка зависомости
+### 1 Установка зависомости
    
    php composer install
    
-2 Создание .env
+### 2 Создание .env
    
    php cp .env.example .env
 
-3 Генерирование ключ
+### 3 Генерирование ключ
    
    php php artisan key:generate
 
-4 Миграция таблицы
+### 4 Миграция таблицы
 
    php artisan migrate
 
-5 Добавление категория и товар
+### 5 Добавление категория и товар
 
   php artisan db:seed --class=CategoryTableSeeder
 
