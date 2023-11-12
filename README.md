@@ -1,41 +1,32 @@
-# internet-magazine
+# Установка
 
-Для установки у вас должен docker & docker-compose
-
-1 Установка Laravel docker
+1 Установка Laravel 
    
-   sudo docker-compose up -d
+   git clone https://github.com/Zhasulan-123/laravel-vuejs.git
+
+   cd laravel-vuejs
 
 2 Установка зависомости
    
-   sudo docker-compose exec php composer update
+   php composer install
    
 3 Создание .env
    
-   sudo docker-compose run --rm php cp .env.example .env
+   php cp .env.example .env
 
 4 Генерирование ключ
    
-   sudo docker-compose run --rm php php artisan key:generate
+   php php artisan key:generate
 
-5 Права доступа
+5 Установка Vuejs
    
-   sudo chmod -R 777 ./*
+   cd vuejs
 
-6 Сайт: 
-
-   localhost:8080  frontend - vuejs
-
-   localhost:8083 backend - Laravel 9v
-
-   localhost:8000 phpMyAdmin
-
-     Пользователь: user
-     Пароль: test
+   npm install
 
 7 Postman
 
-   Регистрация
+   # Регистрация
   
    localhost:8083/api/register - POST
 
@@ -43,7 +34,7 @@
 
    body -> x-www-form-urlencoded  name Астана email astana@mail.ru password astana
 
-   Авторизация
+   # Авторизация
 
    localhost:8083/api/login - POST
 
@@ -51,16 +42,16 @@
 
    body -> x-www-form-urlencoded  email astana@mail.ru password astana
 
-   Категория
+   # Категория поиск
 
-   localhost:8083/api/categories - GET
+   http://127.0.0.1:8000/api/categories/search/Honor - GET
 
-   Продукты
+   # Продукты поиск
 
-   localhost:8083/api/products - GET
+   http://127.0.0.1:8000/api/products/search?query=OPPO A58 - GET
 
-   Заказа
+   # Заказа
 
-   localhost:8083/api/order - GET
+   http://127.0.0.1:8000/api/order - GET
 
    Bearer Token
