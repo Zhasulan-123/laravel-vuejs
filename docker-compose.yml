@@ -1,0 +1,61 @@
+version: '3.7'
+
+services:
+  nginx:
+    container_name: nginx
+    image: nginx:latest
+    volumes:
+      - ./:/var/www
+      - ./docker/config:/etc/nginx/conf.d
+    ports: 
+      - 8083:80
+    depends_on:
+      - php
+
+  php:
+    container_name: php
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    volumes:
+      - ./:/var/www
+    depends_on:
+      - mysql
+
+  mysql:
+    container_name: mysql
+    image: mysql:8.0
+    restart: always
+    volumes:
+      - ./docker/mysql:/var/lib/mysql
+    environment:
+        MYSQL_USER: user
+        MYSQL_DATABASE: internet_magazine
+        MYSQL_PASSWORD: test
+        MYSQL_ROOT_PASSWORD: test
+    ports:
+      - 8082:3306
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    links:
+      - mysql:db
+    ports:
+      - 8000:80
+    environment:
+      MYSQL_USER: user
+      MYSQL_PASSWORD: test
+      MYSQL_ROOT_PASSWORD: test
+
+  node:
+    container_name: node
+    build:
+      context: ./vuejs
+      dockerfile: Dockerfile
+    volumes:
+      - ./vuejs:/app
+      - "/app/node_modules"
+    ports:
+      - "8080:8080"
