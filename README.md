@@ -1,32 +1,42 @@
-# Установка
-
-1 Установка Laravel 
+# Установка Laravel
    
    git clone https://github.com/Zhasulan-123/laravel-vuejs.git
 
    cd laravel-vuejs
 
-2 Установка зависомости
+1 Установка зависомости
    
    php composer install
    
-3 Создание .env
+2 Создание .env
    
    php cp .env.example .env
 
-4 Генерирование ключ
+3 Генерирование ключ
    
    php php artisan key:generate
 
-5 Установка Vuejs
+4 Миграция таблицы
+
+   php artisan migrate
+
+5 Добавление категория и товар
+
+  php artisan db:seed --class=CategoryTableSeeder
+
+  php artisan db:seed --class=ProductsTableSeeder
+
+# Установка Vuejs
    
    cd vuejs
 
    npm install
 
-7 Postman
+   npm run serve
 
-   # Регистрация
+# Postman rest-api
+
+   ## Регистрация
   
    localhost:8083/api/register - POST
 
@@ -34,7 +44,7 @@
 
    body -> x-www-form-urlencoded  name Астана email astana@mail.ru password astana
 
-   # Авторизация
+   ## Авторизация
 
    localhost:8083/api/login - POST
 
@@ -42,16 +52,22 @@
 
    body -> x-www-form-urlencoded  email astana@mail.ru password astana
 
-   # Категория поиск
+   ## Категория поиск
 
    http://127.0.0.1:8000/api/categories/search/Honor - GET
 
-   # Продукты поиск
+   ## Продукты поиск
 
    http://127.0.0.1:8000/api/products/search?query=OPPO A58 - GET
 
-   # Заказа
+   ## Заказа списки
 
    http://127.0.0.1:8000/api/order - GET
+
+   Bearer Token
+
+   ## Заказа создание
+
+   http://127.0.0.1:8000/api/order - POST
 
    Bearer Token
